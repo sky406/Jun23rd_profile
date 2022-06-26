@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Profile } from '../interfaces/interface';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
+
+  profileURL = "http://localhost:4400";
 
 
   // This is Dummy data from Fron-end Team
@@ -32,13 +35,18 @@ export class CommonService {
     }
   ]
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   // This method is for Testing on Front-end Team
   showProfile(id:any) {
     let profile = this.profileData.filter(x => x.ID == id );
     console.log(profile);
     return profile[0];
+  }
+
+  // Method of the APIs from the backend
+  getProfilebyAPI(id:any) {
+    return this.http.get<Profile>(this.profileURL + '/' + id);
   }
 
 }

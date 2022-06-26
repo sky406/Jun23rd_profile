@@ -21,8 +21,16 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.profile);
     let id:any = this.route.snapshot.paramMap.get("id");
-    this.profile = this.cs.showProfile(id);
-    console.log(this.cs.showProfile(id));
+    // this.profile = this.cs.showProfile(id);
+    // console.log(this.cs.showProfile(id));
+
+    this.cs.getProfilebyAPI(id).subscribe(profile => {
+      console.log(profile);
+      this.profile = profile;
+      console.log(this.profile);
+
+
+    })
   }
 
 }
