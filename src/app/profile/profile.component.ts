@@ -12,15 +12,17 @@ export class ProfileComponent implements OnInit {
 
 
 
-  profile:Profile;
+
 
   constructor(private route:ActivatedRoute, private cs:CommonService) { }
 
-
+  profile:any = {}
 
   ngOnInit(): void {
+
     console.log(this.profile);
-    let id:any = this.route.snapshot.paramMap.get("id");
+    // let id:any = this.route.snapshot.paramMap.get("id");
+    let id:any = this.route.snapshot.params['id'];
     // this.profile = this.cs.showProfile(id);
     // console.log(this.cs.showProfile(id));
 
